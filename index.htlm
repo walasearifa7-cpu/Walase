@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encopel - Comparador de Pedidos</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Walase</title>
+
+    <!-- Ícones e Manifest -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,4 +49,31 @@
         }
         .resultado {
             text-align: left;
-            margin-top: 20px
+            margin-top: 20px;
+        }
+        .novo { color: green; }
+        .faltando { color: red; }
+        .igual { color: gray; }
+        .loading {
+            color: #555;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Encopel - Comparador de Pedidos</h1>
+        <p>Envie os dois prints dos pedidos para comparar os itens.</p>
+
+        <input type="file" id="imagem1" accept="image/*"><br>
+        <input type="file" id="imagem2" accept="image/*"><br>
+        <button id="comparar">Comparar</button>
+
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <!-- OCR com Tesseract.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
