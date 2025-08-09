@@ -33,14 +33,19 @@ document.getElementById('comparar').addEventListener('click', async () => {
     resultadoDiv.innerHTML = "<p class='loading'>⏳ Processando imagens... Aguarde.</p>";
 
     try {
-        // Extrai texto das imagens
         const texto1 = await extrairTexto(img1);
         const texto2 = await extrairTexto(img2);
 
-        // Faz comparação
         const { novos, faltando, iguais } = compararListas(texto1, texto2);
 
-        // Exibe resultados
         resultadoDiv.innerHTML = `
             <h3>Resultado da Comparação</h3>
             <p class="novo"><strong>Novos:</strong> ${novos.join(', ') || "Nenhum"}</p>
+            <p class="faltando"><strong>Faltando:</strong> ${faltando.join(', ') || "Nenhum"}</p>
+            <p class="igual"><strong>Iguais:</strong> ${iguais.join(', ') || "Nenhum"}</p>
+        `;
+    } catch (error) {
+        resultadoDiv.innerHTML = `<p style="color:red;">❌ Erro ao processar imagens.</p>`;
+        console.error(error);
+    }
+});
